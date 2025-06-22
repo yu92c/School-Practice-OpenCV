@@ -1,0 +1,43 @@
+
+import cv2 as cv
+
+img = cv.imread('pic/cb.jpg')             # loading image.
+cv.imshow('cb', img)    
+
+resize = cv.resize(img,(800,800), interpolation=cv.INTER_AREA)
+# interpolation=cv.INTER_AREA --> 縮小圖片
+              # cv.INTER_LINEAR --> 圖片放大
+              # cv.INTER_CUBIC --> 圖片放大
+
+# | 插值方法名稱       | 對應常數名      | 用途說明         | 特色    |
+# | ------------ | ----------------- | --------------- | --------- |
+# | 區域插值法     | `cv.INTER_AREA`   |  縮小圖片時最佳   | 降噪效果好、最清晰 |
+# | 雙線性插值     | `cv.INTER_LINEAR` | 放大圖片時預設值  | 速度快，畫質普通  |
+# | 立方插值（4×4） | `cv.INTER_CUBIC`  | 放大圖更高品質   | 畫質好，但慢    |
+
+
+#cv.imshow('resize', resize)
+
+ 
+
+# crop----------------------------
+crop = img[80:100, 300:400]
+cv.imshow('crop',crop)
+
+# 原圖 img[y][x]：
+#+--------------------------------------+
+#|                                      |
+#|   y=80 → +----------------------+    |
+#|          |                      |    |
+#|          |     裁切的區塊       |    |
+#|   y=100→ +----------------------+    |
+#|          x=300             x=400     |
+# +--------------------------------------+
+# 大小為 (高 20、寬 100)
+
+
+
+
+
+
+cv.waitKey(0)   
