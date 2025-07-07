@@ -3,7 +3,7 @@
 # 因為：輸入是 (x, y, 1)，輸出是 (x', y')。 
 
 
-#| Affin Transformation Type   | Description                                                  |
+#| Affin Transformation Type   | Description                                                  
 #| ----------------------------| ------------------------------------------------------------ |
 #| 1. Translation              | Moves the image in X or Y direction                          |
 #| 2. Scaling                  | Enlarges or shrinks the image                                |
@@ -12,12 +12,12 @@
 #| 5. Reflection               | Mirrors the image across an axis                             |
 #| 6. Combination              | You can combine any of the above in one single affine matrix |
 
-# 1. translate----------------------------------------------------------------
+# 1. translate--------------------------------------------------------------------------------
 
 import cv2 as cv
 import numpy as np
 
-img = cv.imread('pic/cb.jpg')
+img = cv.imread('../pic/cb.jpg')
 cv.imshow('oringal', img)     
 
 
@@ -28,7 +28,7 @@ def translate(img, x, y):
 
 translated = translate(img, 100, 100)
 cv.imshow('Translated', translated)
-cv.waitKey(0)
+
 
 # 搬移座標：像素座標要用矩陣去計算新位置（用 warpAffine()）
 
@@ -43,3 +43,19 @@ cv.waitKey(0)
 # |  C D|
 # +-----+
 #--------------------------------------------------------------------------------- 
+
+# 3. tRotation --------------------------------------------------------------------------------
+def rotate(img, angle, rotPoint=None):
+    (height, width) = img.shape[:2]
+
+    if rotPoint is None:
+       rotPoint = (width // 2, height // 2)
+
+    rotMat = cv.getRotationMatrix2D(rotPoint, angle, 1.0)
+    dimensions = (width, height)
+    return cv.warpAffine(img, rotMat, dimensions)
+
+rotated = rotate(img, 45)
+cv.imshow('Rotated', rotated)
+
+cv.waitKey(0)
