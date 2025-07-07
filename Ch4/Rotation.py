@@ -2,8 +2,9 @@
 import cv2 as cv
 import numpy as np
 
-img = cv.imread('../pic/cb.jpg')
-cv.imshow('oringal', img)     
+img = cv.imread('pic/cb.jpg')
+cv.imshow('original', img)
+ 
 
 def rotate(img, angle, rotPoint=None):
     (height, width) = img.shape[:2]
@@ -17,5 +18,4 @@ def rotate(img, angle, rotPoint=None):
 
 rotated = rotate(img, 45) #45往左倒 , -45向右倒。
 cv.imshow('Rotated', rotated)
-
 cv.waitKey(0)
