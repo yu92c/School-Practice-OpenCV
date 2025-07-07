@@ -1,8 +1,8 @@
-
 # 2D Affine Transformation in OpenCV 一律使用 2×3 矩陣，這是固定格式
-# 因為：輸入是 (x, y, 1)，輸出是 (x', y')。
+# 在 NumPy 或 Python 中，2D 矩陣的索引格式是 ： [ 行 ][ 列 ]
+# 因為：輸入是 (x, y, 1)，輸出是 (x', y')。 
 
- 
+
 #| Affin Transformation Type   | Description                                                  |
 #| ----------------------------| ------------------------------------------------------------ |
 #| 1. Translation              | Moves the image in X or Y direction                          |
@@ -12,26 +12,34 @@
 #| 5. Reflection               | Mirrors the image across an axis                             |
 #| 6. Combination              | You can combine any of the above in one single affine matrix |
 
+# 1. translate----------------------------------------------------------------
+
 import cv2 as cv
 import numpy as np
 
 img = cv.imread('pic/cb.jpg')
-cv.imshow('cb',img)
+cv.imshow('oringal', img)     
 
 
-
-
-# 1. translate----------------------------------------------------------------
 def translate(img, x, y):
-    translate = np.float32([1,0,x],[0,1,y])
-    
-    # x: 水平方向要移動多少像素（+往右，−往左）
-    # y: 垂直方向要移動多少像素（+往下，−往上）
+    transMat = np.float32([[1, 0, x], [0, 1, y]])
+    dimensions = (img.shape[1], img.shape[0]) #dimensions：指定輸出影像的大小，(width, height)。
+    return cv.warpAffine(img, transMat, dimensions) 
 
+translated = translate(img, 100, 100)
+cv.imshow('Translated', translated)
+cv.waitKey(0)
 
-    dimensions = (img.shape[1], img.shape[0])
-    return cv.warpAffine(img, translate, dimensions)
+# 搬移座標：像素座標要用矩陣去計算新位置（用 warpAffine()）
 
-#---------------------------------------------------------------------------------
+# 原本圖片座標
+# |A B |
+# |C D |
+# +----+
 
-
+# 做平移(右移1格)，像素「位置」改變（搬移座標）
+# +-----+
+# |  A B|
+# |  C D|
+# +-----+
+#--------------------------------------------------------------------------------- 
