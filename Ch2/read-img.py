@@ -5,7 +5,7 @@
 import cv2 as cv
 
 img = cv.imread('pic/cb.jpg')             # loading image.
-print(img.shape)                          #check img size.
+print(img.shape)                          # check img size.
 cv.imshow('cb', img)                      # display image in new window ('cb' jsut title name).
 cv.waitKey(0)                             # will keep showing till press esc.
 
