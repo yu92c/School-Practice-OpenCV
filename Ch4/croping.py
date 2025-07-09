@@ -2,9 +2,13 @@ import cv2 as cv
 import numpy as np
 
 img = cv.imread('pic/cb.jpg')
+print("Original size:", img.shape)
 cv.imshow('original', img)
 
+
+
 crop = img[200:400, 300:500]
+print('crop:',crop.shape)
 cv.imshow('crop',crop)
 cv.waitKey(0)   
 
