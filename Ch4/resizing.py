@@ -3,8 +3,10 @@ import numpy as np
 
 img = cv.imread('pic/cb.jpg') # loading image.
 cv.imshow('original', img)
+print('Original:', img.shape) # original img size 
 
-resize = cv.resize(img,(300,300), interpolation=cv.INTER_AREA)
+resize = cv.resize(img,(300,200), interpolation=cv.INTER_AREA)
+print('resize:',resize.shape) # after resize 
 
 # interpolation=cv.INTER_AREA --> 縮小圖片
               # cv.INTER_LINEAR --> 圖片放大
