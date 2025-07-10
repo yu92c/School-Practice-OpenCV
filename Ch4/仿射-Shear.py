@@ -39,7 +39,7 @@ h, w = img.shape[:2] #只取高、寬（不含色彩通道）
 shear_x = -0.5 # 正數 向左, 負數 向右。
 
 # 平移補償：讓圖像在畫布中央對齊
-lr = - shear_x * h / 2  # ❗ 負號，表示向左平移
+lr = - shear_x * h / 2  #  負號，表示向左平移
 
 # === 仿射矩陣 M_x ===
 M_x = np.float32([
@@ -55,3 +55,8 @@ sheared_x = cv2.warpAffine(img, M_x, (out_w, h))
 cv2.imshow('Original', img)
 cv2.imshow('Shear X（向右傾斜）', sheared_x)
 cv2.waitKey(0)
+
+
+# 不必指定 3 個座標點（如 getAffineTransform 需要點對）。 快速得到結果,不易控制每個細節。
+
+# 手動寫仿射矩陣 ,你要清楚控制 shear / rotate / scale / translate。需手動計算矩陣,容易出錯。
