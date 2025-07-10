@@ -10,6 +10,7 @@ cv.imshow('original', img)
 crop = img[200:400, 300:500]
 print('crop:',crop.shape)
 cv.imshow('crop',crop)
+cv.imwrite('crop.jpg', crop) # save crop img.
 cv.waitKey(0)   
 
 # 原圖 img[y][x]：
