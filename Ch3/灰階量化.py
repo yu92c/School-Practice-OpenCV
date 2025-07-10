@@ -1,7 +1,9 @@
 import cv2
 import numpy as np
 
-#量化 = 降低精度、簡化細節
+# 灰階量化是控制「明暗」分層
+
+#量化 Quantization  = 降低精度、簡化細節
 #適合用於：
 #儲存壓縮
 #特徵萃取前處理
@@ -59,7 +61,7 @@ def image_quantization(f, bits):
     return g
 
 def main():  #「定義」函式，不會自動執行
-    img1 = cv2.imread('pic/xx.jpg', -1)
+    img1 = cv2.imread('pic/xx.jpg', 0)
     img2 = image_quantization(img1, 2) 
     #| 位元數 | 灰階層數（levels） | 效果     |
     #| --- | ------------ | ------------- |
