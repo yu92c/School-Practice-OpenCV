@@ -1,4 +1,4 @@
-# Perspective
+# Perspective Transformation
 # 使用函式： cv2.getPerspectiveTransform() + cv2.warpPerspective()
 
 # 效果比較：
@@ -25,7 +25,7 @@ target_width = 300
 target_height = 500
 
 dst_pts = np.float32([
-    [0, 0],                          # 左上
+    [0, 0],                         # 左上
     [target_width - 1, 0],          # 右上
     [0, target_height - 1],         # 左下
     [target_width - 1, target_height - 1]  # 右下
