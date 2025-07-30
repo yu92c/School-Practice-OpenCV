@@ -13,9 +13,7 @@ import numpy as np
 
 #first one, no color, size 100x300
 blank = np.zeros((500, 500, 3), dtype='uint8')
-
 cv.putText(blank, 'hello', (200,200) ,cv.FONT_HERSHEY_SIMPLEX, 1.0, (255,0,0), 3)
-# 在
 
 cv.imshow('text', blank)
 cv.waitKey(0)

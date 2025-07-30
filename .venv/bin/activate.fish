@@ -29,7 +29,7 @@ end
 # Unset irrelevant variables.
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV "/Users/k.c/Desktop/Python-O.CV/.venv"
+set -gx VIRTUAL_ENV "/Users/k.c/Desktop/OpenCV-Python/.venv"
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/bin" $PATH

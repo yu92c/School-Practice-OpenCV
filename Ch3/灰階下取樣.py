@@ -37,18 +37,19 @@ target_channel = 0   # 可以改 1 或 2 試試
 # (一起看）顏色取樣
 down = downsampling(img[:, :, target_channel], rate)
 print("Downsampled size:", down.shape)
-#  cv.imshow(f'downsampling x{rate} | channel {target_channel}', down)
-
+cv.imshow(f'downsampling x{rate} | channel {target_channel}', down)
 
 # 模糊感：只要你有「下取樣 ➜ 再放大」就會模糊
 up = cv.resize(down, (img.shape[1], img.shape[0]), interpolation=cv.INTER_LINEAR)
 cv.imshow(f'downsampling x{rate} | upsampled (模糊)', up)
 
 
+
 # 三個顏色分開看 , 刻意只取了單一通道 來做取樣。 （灰階強度分析）
-# cv.imshow('Blue channel (0)', img[:, :, 0])
-# cv.imshow('Green channel (1)', img[:, :, 1])
-# cv.imshow('Red channel (2)', img[:, :, 2])
+cv.imshow('Blue channel (0)', img[:, :, 0])
+cv.imshow('Green channel (1)', img[:, :, 1])
+cv.imshow('Red channel (2)', img[:, :, 2])
+
 
 cv.waitKey(0)
 

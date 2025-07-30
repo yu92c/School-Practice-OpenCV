@@ -11,5 +11,3 @@ cv.waitKey(0)                             # will keep showing till press esc.
 
 # for now just using small image.
 # if load large image (larger than your screen),it might go off screen.
-
-
